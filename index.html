@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital & Appointment Management System</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Navigation -->
+  <nav class="bg-blue-600 p-4 text-white">
+    <div class="container mx-auto flex justify-between">
+      <h1 class="text-2xl font-bold">Hospital Management</h1>
+      <div>
+        <button id="adminBtn" class="mx-2 hover:text-black">Admin Dashboard</button>
+        <button id="doctorBtn" class="mx-2 hover:text-black">Doctor Dashboard</button>
+        <button id="patientBtn" class="mx-2 hover:text-black">Patient Booking</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Admin Dashboard -->
+  <div id="adminDashboard" class="container mx-auto p-6 hidden">
+    <h2 class="text-2xl font-bold mb-4">Hospital Admin Dashboard</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="text-lg font-semibold">Register Hospital</h3>
+        <input id="hospitalName" type="text" placeholder="Hospital Name" class="border p-2 w-full mb-2">
+        <input id="hospitalLocation" type="text" placeholder="Location" class="border p-2 w-full mb-2">
+        <button id="registerHospital" class="bg-blue-500 text-white p-2 rounded">Register</button>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="text-lg font-semibold">Add Department</h3>
+        <select id="hospitalSelect" class="border p-2 w-full mb-2">
+          <option value="">Select Hospital</option>
+        </select>
+        <input id="departmentName" type="text" placeholder="Department Name" class="border p-2 w-full mb-2">
+        <button id="addDepartment" class="bg-blue-500 text-white p-2 rounded">Add</button>
+      </div>
+    </div>
+    <div class="bg-white p-4 rounded shadow mt-4">
+      <h3 class="text-lg font-semibold">Hospital List</h3>
+      <div id="hospitalList" class="mt-2"></div>
+    </div>
+    <div class="bg-white p-4 rounded shadow mt-4">
+      <h3 class="text-lg font-semibold">Hospital Stats</h3>
+      <p>Total Consultations: <span id="totalConsultations">0</span></p>
+      <p>Total Revenue: $<span id="totalRevenue">0</span></p>
+      <p>Doctors: <span id="hospitalDoctors">None</span></p>
+    </div>
+  </div>
+
+  <!-- Doctor Dashboard -->
+  <div id="doctorDashboard" class="container mx-auto p-6 hidden">
+    <h2 class="text-2xl font-bold mb-4">Doctor Dashboard</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="text-lg font-semibold">Register Doctor</h3>
+        <input id="doctorName" type="text" placeholder="Doctor Name" class="border p-2 w-full mb-2">
+        <input id="doctorEmail" type="email" placeholder="Email" class="border p-2 w-full mb-2">
+        <input id="doctorPassword" type="password" placeholder="Password" class="border p-2 w-full mb-2">
+        <input id="doctorSpecialization" type="text" placeholder="Specializations (comma-separated)" class="border p-2 w-full mb-2">
+        <input id="doctorExperience" type="number" placeholder="Years of Experience" class="border p-2 w-full mb-2">
+        <button id="registerDoctor" class="bg-blue-500 text-white p-2 rounded">Register</button>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="text-lg font-semibold">Add Availability</h3>
+        <select id="doctorHospital" class="border p-2 w-full mb-2">
+          <option value="">Select Hospital</option>
+        </select>
+        <input id="doctorSlot" type="datetime-local" class="border p-2 w-full mb-2">
+        <input id="consultationFee" type="number" placeholder="Consultation Fee" class="border p-2 w-full mb-2">
+        <button id="addAvailability" class="bg-blue-500 text-white p-2 rounded">Add Slot</button>
+      </div>
+    </div>
+    <div class="bg-white p-4 rounded shadow mt-4">
+      <h3 class="text-lg font-semibold">Doctor Stats</h3>
+      <p>Total Earnings: $<span id="doctorEarnings">0</span></p>
+      <p>Total Consultations: <span id="doctorConsultations">0</span></p>
+    </div>
+  </div>
+
+  <!-- Patient Booking -->
+  <div id="patientBooking" class="container mx-auto p-6 hidden">
+    <h2 class="text-2xl font-bold mb-4">Patient Booking</h2>
+    <div class="bg-white p-4 rounded shadow">
+      <h3 class="text-lg font-semibold">Search Doctors</h3>
+      <input id="patientName" type="text" placeholder="Your Name" class="border p-2 w-full mb-2">
+      <input id="searchSpecialization" type="text" placeholder="Specialization" class="border p-2 w-full mb-2">
+      <select id="searchHospital" class="border p-2 w-full mb-2">
+        <option value="">Select Hospital</option>
+      </select>
+      <button id="searchDoctors" class="bg-blue-500 text-white p-2 rounded">Search</button>
+    </div>
+    <div id="doctorList" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
